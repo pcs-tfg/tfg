@@ -1,6 +1,8 @@
 """
 Módulo que se encarga e hacer las solicitudes de la optimizción
 """
+from os import error
+
 import pandas as pd
 from pandas import DataFrame
 from sklearn.naive_bayes import GaussianNB

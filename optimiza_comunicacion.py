@@ -19,7 +19,6 @@ from collections import defaultdict
 from sklearn import model_selection
 from sklearn.metrics import accuracy_score, confusion_matrix
 from copy import copy
-from mglearn import discrete_scatter
 
 # class Optimizador(metaclass=ABCMeta):
 #     @classmethod
@@ -319,24 +318,3 @@ class OptimizadorNB:
 
                 resultado = 'ok'
         return resultado
-
-    def plot_dibuja_clases(self):
-
-        # discrete_scatter(NB.dataset_entrenamiento[:, 0], NB.dataset_entrenamiento[:, 1],
-        #  NB.dataset_entrenamiento[c.COMUNICACION])
-        # valores = array.iloc[:, 1:len(NB.dataset_entrenamiento.columns) - 1].values
-        # array.iloc[:, 1:len(dataset.columns) - 1].values
-
-        array = self._dataset_entrenamiento.loc[
-            (self._dataset_entrenamiento['sexo'] == 0) &
-            (self._dataset_entrenamiento['edad'] < 45)]
-        # array = self._dataset_entrenamiento
-        valores = array.iloc[:, array.columns.get_loc('estado_civil')].values
-        valores2 = array.iloc[:, array.columns.get_loc('edad')].values
-        # valores = array.iloc[:,:NB.dataset_entrenamiento['edad']].values
-        comunicacion = array.iloc[:, array.columns.get_loc(c.COMUNICACION)].values
-        discrete_scatter(valores, valores2, y=comunicacion)
-        plt.xlabel("Sexo")
-        plt.ylabel("Edad")
-        plt.legend (self.mapasCodificacion.get(c.COMUNICACION))
-        plt.show()
