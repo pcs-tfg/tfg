@@ -272,6 +272,7 @@ class OptimizadorNB:
                 caracteristicas = array.iloc[:, 1:len(fila.columns) - 1].values
                 clasificacion = array.iloc[:, len(fila.columns) - 1].values
                 self._naive_bayes.partial_fit(caracteristicas, clasificacion)
+                self._hay_que_entrenar = True
         return resultado
 
     def _cambia_comunicacion(self, fila):
